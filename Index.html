@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Lambre - Consultant QHSE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg-color: #ffffff;
+            --header-text-color: #ffffff;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: var(--header-text-color);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        header .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary-color);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header h2 {
+            margin: 10px 0;
+            font-weight: 300;
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            height: 1.5em;
+            display: inline-block;
+        }
+        
+        header .summary {
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .nav-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-button {
+            background-color: transparent;
+            color: var(--header-text-color);
+            border: 2px solid var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode .nav-button:hover {
+            color: white;
+        }
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+        
+        .card {
+            background: var(--card-bg-color);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4em;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+        .portfolio-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-item p {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .skills-grid .card {
+            border-left: none;
+            border-top: 5px solid var(--secondary-color);
+        }
+        .skills-grid .card-title {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .skills-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-grid li {
+            margin-bottom: 15px;
+        }
+        .skills-grid li strong {
+            color: var(--text-color);
+            font-weight: 700;
+        }
+        
+        /* MODIFICATION : Couleur du texte descriptif */
+        .skills-grid li em {
+            font-size: 0.9em;
+            color: var(--text-color); /* Utilise la couleur du texte principal */
+            font-style: normal;
+        }
+
+        .langues-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            text-align: center;
+        }
+        .langue-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .langue-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--header-text-color);
+            text-align: center;
+            padding: 30px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        #back-to-top:hover {
+            background-color: #2980b9;
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: .15em solid var(--secondary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .1em;
+            animation: 
+                typing 2s steps(15, end),
+                blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color); }
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ddd;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            padding-left: 80px;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            left: 15px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item .card {
+            border-left: 5px solid var(--secondary-color);
+        }
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .experience-item li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%233498db" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>') no-repeat left 5px;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        .experience-item li strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode {
+            --primary-color: #ecf0f1;
+            --secondary-color: #3498db;
+            --background-color: #2c3e50;
+            --text-color: #bdc3c7;
+            --card-bg-color: #34495e;
+            --header-text-color: #2c3e50;
+        }
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--secondary-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="#" id="back-to-top" title="Retour en haut">&uarr;</a>
+    
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+
+    <header>
+        <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambre" class="profile-pic">
+        <h1>David Lambre</h1>
+        <h2><span class="typewriter">Consultant QHSE</span></h2>
+        <p class="summary">
+            Consultant QHSE spécialisé dans le pilotage de systèmes de management dans le secteur exigeant de la grande distribution. Mon parcours diversifié allie une expertise en conformité réglementaire à une solide expérience en management opérationnel, ce qui me confère une vision transversale des enjeux.
+            <br><br>
+            J'ai démontré ma capacité à optimiser les processus, prévenir les risques et mobiliser les équipes pour renforcer la performance globale de l'entreprise (qualité, sécurité, environnement). Certifié Responsable Système QHSE, je cherche à mettre ma rigueur et mes compétences en amélioration continue au service d'une entreprise engagée dans une démarche d'excellence.
+        </p>
+        
+        <div class="nav-buttons">
+            <a href="#experiences" class="nav-button">Expériences</a>
+            <a href="#competences" class="nav-button">Compétences</a>
+            <a href="#formations" class="nav-button">Formations</a>
+            <a href="#portfolio" class="nav-button">Portfolios</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="experiences">
+            <h2 class="section-title">Expériences Professionnelles</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable Qualité <span style="float:right; font-style:italic; color:#777;">2024 – 2025</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">E.LECLERC WATTRELOS</p>
+                        <ul>
+                            <li><strong>Pilotage de la Conformité et des Audits :</strong> J'ai piloté l'ensemble du cycle d'audits en agissant comme interlocuteur privilégié des organismes de contrôle externes (DDPP, certificateurs). Cela incluait la coordination des 5 audits de renouvellement de certification (FSQS, Bio...) contribuant à l'augmentation de la note globale de l'enseigne, ainsi que la planification des audits internes pour garantir la conformité sanitaire.</li>
+                            <li><strong>Maîtrise de la Sécurité Sanitaire et Gestion de Crise :</strong> En tant que garant de l'application des procédures d'hygiène (HACCP, PMS), j'ai également piloté la gestion des situations de crise (alertes sanitaires, retraits/rappels de produits), en assurant la réactivité, la traçabilité et la communication avec les équipes et les autorités.</li>
+                            <li><strong>Amélioration Continue et Performance :</strong> J'ai transformé l'analyse des indicateurs de performance (KPIs) et les non-conformités relevées lors des audits en plans d'actions concrets, puis présenté les bilans en revue de direction pour piloter la démarche d'amélioration.</li>
+                            <li><strong>Conduite de Projets QHSE & RSE :</strong> J'ai mené des projets transverses à fort impact, comme le renouvellement des équipements de protection individuelle (EPI) pour améliorer les conditions de travail, et le pilotage de la certification "anti-gaspi" pour structurer la démarche RSE du magasin.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable Magasin <span style="float:right; font-style:italic; color:#777;">2019 – 2023</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">LABEL VIE LESQUIN</p>
+                        <ul>
+                            <li><strong>Pilotage de la Performance et Management :</strong> J'ai piloté le centre de profit en manageant une équipe de 5 personnes, avec la double responsabilité de garantir l'atteinte des objectifs commerciaux et de développer les compétences de l'équipe pour assurer un service client de qualité.</li>
+                            <li><strong>Garantie de l'Excellence Opérationnelle :</strong> J'ai mené des projets d'amélioration continue, dont une action d'optimisation de gamme en rationalisant l'assortiment, ce qui a permis d'améliorer la rotation des stocks et de réduire la démarque tout en augmentant la performance globale du magasin.</li>
+                            <li><strong>Développement des Filières Locales et Conseil Client :</strong> J'ai développé les filières d'approvisionnement locales en créant des partenariats avec des petits producteurs biologiques pour garantir une offre de produits frais, de saison et de haute qualité.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable de Rayon <span style="float:right; font-style:italic; color:#777;">2013 – 2019</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">LABEL VIE HEM</p>
+                        <ul>
+                            <li><strong>Gestion Commerciale et Performance :</strong> J'ai assuré le pilotage complet du rayon. Mon action principale a été l'optimisation des commandes et de la rotation des produits, permettant de maintenir le taux de démarque du rayon en dessous de l'objectif du magasin.</li>
+                            <li><strong>Garantie de la Qualité et de la Traçabilité :</strong> J'ai mis en place des contrôles qualité systématiques à la réception des produits pour garantir la conformité des livraisons. De plus, j'ai supervisé la traçabilité complète des lots pour garantir l'intégrité du label.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2 class="section-title">Compétences</h2>
+            <div class="skills-grid">
+                <div class="card hidden">
+                    <h3 class="card-title">Pilotage Opérationnel & Amélioration Continue</h3>
+                    <ul>
+                        <li><strong>Audit de Systèmes de Management (ISO 19011) :</strong> Planification, réalisation et suivi d'audits internes et externes.</li>
+                        <li><strong>Analyse des Risques :</strong> Capacité à identifier, évaluer et hiérarchiser les risques (DUERP, AMDEC).</li>
+                        <li><strong>Sécurité Sanitaire des Aliments :</strong> Maîtrise de la méthode HACCP et du Plan de Maîtrise Sanitaire (PMS).</li>
+                        <li><strong>Gestion des non-conformités :</strong> Analyse des causes racines (5 Pourquoi, Ishikawa) et déploiement de plans d'actions.</li>
+                        <li><strong>Formation et Sensibilisation :</strong> Création de supports et animation de formations sur les bonnes pratiques QHSE.</li>
+                        <li><strong>Veille réglementaire et normative :</strong> Capacité à suivre les évolutions légales et normatives pour garantir la mise en conformité continue.</li>
+                    </ul>
+                </div>
+                <div class="card hidden">
+                    <h3 class="card-title">Normes et Référentiels</h3>
+                     <ul>
+                        <li><strong>FSQS :</strong> Garant du respect du cahier des charges de la grande distribution.</li>
+                        <li><strong>Agriculture Biologique :</strong> Responsable de la conformité de la filière Bio et garantie de la traçabilité.</li>
+                        <li><strong>Certification de services :</strong> Pilotage de la démarche d'amélioration de la qualité de service.</li>
+                        <li><strong>Certification phytosanitaire :</strong> Gestion de la conformité réglementaire pour la vente de produits.</li>
+                        <li>
+                            <strong>Connaissance des Normes ISO (9001, 14001, 45001, 22000, 26000) et MASE.</strong>
+                            <br><em>Maîtrise des exigences et des principes de ces référentiels clés acquise lors de ma certification RNCP Niveau 6, me permettant de les déployer dans un contexte opérationnel.</em>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card hidden">
+                    <h3 class="card-title">Compétences Transverses & Managériales</h3>
+                    <ul>
+                        <li><strong>Gestion de Projet :</strong> Pilotage de projets transverses de la conception au déploiement.</li>
+                        <li><strong>Management d'Équipe & Leadership :</strong> Encadrement, formation et coordination d'équipes.</li>
+                        <li><strong>Conduite du Changement :</strong> Accompagnement des équipes dans l'adoption de nouvelles procédures.</li>
+                        <li><strong>Analyse de Données & Reporting :</strong> Analyse des KPIs pour préparer les revues de direction.</li>
+                         <li><strong>Outils Numériques :</strong> Maîtrise du Pack Office (Excel, PowerPoint) et formation sur Power BI.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="formations">
+            <h2 class="section-title">Formations et Certifications</h2>
+            <div class="skills-grid">
+                <div class="card hidden">
+                    <h3>Responsable Système QHSE (2024)</h3>
+                    <p>Certification RNCP Niveau 6. Formation intensive apportant la méthodologie pour piloter un système de management QHSE.</p>
+                    <p><strong>Mémoire Professionnel :</strong> Audit et optimisation du système documentaire chez E.Leclerc (mise à jour, codification, numérisation).</p>
+                </div>
+                <div class="card hidden">
+                    <h3>Certifications Clés</h3>
+                    <p><strong>Auditeur de Systèmes de Management (ISO 19011) - 2024 :</strong> Valide ma compétence à planifier, réaliser et suivre des audits.</p>
+                    <p><strong>WSET niveau 1 - 2023 :</strong> Démontre ma capacité à suivre une méthode d'évaluation sensorielle rigoureuse.</p>
+                </div>
+                 <div class="card hidden">
+                    <h3>Maîtrise en Droit et Sciences Politiques (2011)</h3>
+                    <p>Parcours débuté en Droit et complété en Relations Internationales, m'ayant doté d'une grande rigueur analytique et d'une capacité à naviguer dans des systèmes normatifs complexes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2 class="section-title">Portfolios</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item hidden">
+                    <img src="https://i.imgur.com/G9VkYQC.png" alt="Plan de communication" class="portfolio-img">
+                    <p>Plan de communication sur un enjeu de sécurité sanitaire</p>
+                </div>
+                <div class="portfolio-item hidden">
+                    <img src="https://i.imgur.com/kXbitaG.png" alt="Analyse des risques AMDEC" class="portfolio-img">
+                    <p>Analyse des risques d'une mauvaise gestion documentaire via l'outil AMDEC</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="langues">
+            <h2 class="section-title">Langues</h2>
+            <div class="langues-grid">
+                <div class="langue-item">
+                    <h4>Français</h4>
+                    <p>Langue maternelle</p>
+                </div>
+                <div class="langue-item">
+                    <h4>Anglais</h4>
+                    <p>Niveau B1 (Professionnel)</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>David Lambre</strong></p>
+            <p><a href="https://www.linkedin.com/in/davidlambre" target="_blank">Profil LinkedIn</a></p>
+            <p>&copy; 2025 - Site réalisé avec l'aide de l'IA Gemini</p>
+        </div>
+    </footer>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        // Script combiné
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            if (anchor.id !== 'back-to-top') {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var images = document.getElementsByClassName("portfolio-img");
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        }
+        var span = document.getElementsByClassName("close")[0];
+        if (span) {
+            span.onclick = function() { 
+                modal.style.display = "none";
+            }
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+        
+        let mybutton = document.getElementById("back-to-top");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            }
+            else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }    
+        }
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
+
+</body>
+</html>
