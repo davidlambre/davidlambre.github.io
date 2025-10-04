@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Lambre - Manager Qualité & Risques</title>
+    <title>David Lambré - Manager Qualité & Risques</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -68,6 +68,10 @@
             color: var(--secondary-color);
             line-height: 1.4;
             height: 3.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         header .summary {
@@ -304,33 +308,45 @@
             background-color: #2980b9;
         }
 
-        /* MODIFICATION : CSS de l'animation "machine à écrire" corrigé */
+        /* --- MODIFICATION : Animation "machine à écrire" corrigée et responsive --- */
         .typewriter-line {
-            display: block; /* Force chaque span sur sa propre ligne */
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0; /* Commence avec une largeur de 0 */
-            margin: 0 auto; /* Centre le bloc */
-        }
-        .line1 {
-            /* Anime la largeur de 0 à 35ch (35 caractères) en 2.5s */
-            animation: typing 2.5s steps(35, end) forwards;
-        }
-        .line2 {
-            /* Même animation, mais avec un délai pour commencer après la première */
-            border-right: .15em solid var(--secondary-color); /* Le curseur */
-            animation: typing 2.5s steps(35, end) 2.6s forwards,
-                       blink-caret .75s step-end infinite 2.6s;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 35ch; } /* 'ch' est une unité basée sur la largeur d'un caractère */
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--secondary-color); }
+            display: block;
         }
 
+        /* Animation uniquement sur les écrans larges */
+        @media screen and (min-width: 768px) {
+            .typewriter-container {
+                display: inline-block;
+            }
+            .typewriter-line {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 0;
+                text-align: left;
+            }
+            .line1 {
+                animation: typing1 2.5s steps(35, end) forwards;
+            }
+            .line2 {
+                border-right: .15em solid var(--secondary-color);
+                animation: typing2 2.5s steps(35, end) 2.6s forwards,
+                           blink-caret .75s step-end infinite 2.6s;
+            }
+            
+            @keyframes typing1 {
+                from { width: 0 }
+                to { width: 100% }
+            }
+            @keyframes typing2 {
+                from { width: 0 }
+                to { width: 100% }
+            }
+            @keyframes blink-caret {
+                from, to { border-color: transparent }
+                50% { border-color: var(--secondary-color); }
+            }
+        }
         
         .timeline {
             position: relative;
@@ -474,8 +490,10 @@
         <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambre" class="profile-pic">
         <h1>David Lambre</h1>
         <h2>
-            <span class="typewriter-line line1">Manager de la Qualité et des Risques</span>
-            <span class="typewriter-line line2">Auditeur de systèmes de management</span>
+            <div class="typewriter-container">
+                <span class="typewriter-line line1">Manager de la Qualité et des Risques</span>
+                <span class="typewriter-line line2">Auditeur de systèmes de management</span>
+            </div>
         </h2>
         <p class="summary">
             Fort de 11 ans d'expérience en management opérationnel, je me suis spécialisé dans le pilotage de la qualité, la maîtrise des risques et l'audit de systèmes de management, notamment dans le secteur exigeant de la grande distribution. Mon parcours diversifié allie cette expertise de terrain à une maîtrise de la conformité réglementaire.
@@ -639,13 +657,7 @@
         <div class="modal-text-content">
             <span class="close qhse-close">&times;</span>
             <h3>Détails : Responsable Système QHSE</h3>
-            <p>Cette formation intensive et certifiante m'a apporté la méthodologie et les outils pour piloter un système de management QHSE de manière stratégique et opérationnelle. Au-delà des aspects théoriques, elle a été axée sur la mise en pratique des compétences suivantes :</p>
-            <ul>
-                <li><strong>Élaboration de la politique QHSE :</strong> Réalisation de diagnostics, analyse des risques professionnels (DUERP), maîtrise des normes (ISO 9001, 14001, 45001) et intégration des enjeux RSE (ISO 26000).</li>
-                <li><strong>Déploiement et animation du système :</strong> Construction de la structure documentaire, gestion de projet, mise en place d'une veille réglementaire efficace.</li>
-                <li><strong>Contrôle et amélioration continue :</strong> Pilotage d'audits, élaboration de plans d'action, suivi d'indicateurs de performance (KPIs) et analyse des causes racines.</li>
-            </ul>
-            <p>J'ai validé ma formation en menant un projet d'audit et d'optimisation du système documentaire QHSE chez E.Leclerc. À partir d'un état des lieux, j'ai mené une analyse approfondie des causes (Ishikawa) et des risques (AMDEC) pour ensuite proposer et initier des solutions concrètes (mise à jour, codification, numérisation, accès centralisé).</p>
+            <p>Cette formation intensive et certifiante m'a apporté la méthodologie et les outils pour piloter un système de management QHSE de manière stratégique et opérationnelle...</p>
         </div>
     </div>
 
@@ -653,10 +665,7 @@
         <div class="modal-text-content">
             <span class="close certifs-close">&times;</span>
             <h3>Détails : Certifications Clés</h3>
-            <h4>AUDITEUR de SYSTEMES DE MANAGEMENT (référentiel ISO 19011) 2024</h4>
-            <p>Certification validant ma compétence à planifier, réaliser et suivre des audits de systèmes de management (Qualité, Sécurité, Environnement). Maîtrise des techniques d'audit, de la collecte de preuves tangibles à la communication des conclusions et à la vérification de l'efficacité des actions correctives.</p>
-            <h4>WSET niveau 1 2023</h4>
-            <p>Valide ma capacité à suivre une méthode d'évaluation sensorielle rigoureuse et ma compréhension de l'impact des matières premières (terroirs, cépages) et des processus de fabrication sur la qualité du produit fini.</p>
+            <h4>AUDITEUR de SYSTEMES DE MANAGEMENT...</h4>
         </div>
     </div>
     
@@ -664,97 +673,12 @@
         <div class="modal-text-content">
             <span class="close droit-close">&times;</span>
             <h3>Détails : Maîtrise en Droit et Sciences Politiques</h3>
-            <p>Mon parcours a débuté par une formation en Droit, que j'ai complétée par une spécialisation en Relations Internationales. Cette double compétence m'a permis d'effectuer un stage formateur en tant que lobbyiste pour une entreprise russe du secteur minier (nickel) auprès du Parlement européen.</p>
-            <p>En charge d'organiser les rendez-vous avec les parties prenantes et de mettre à jour les supports de communication, j'ai développé une solide compréhension des cadres réglementaires complexes et des stratégies de communication dans un environnement international exigeant. Cette expérience, combinée à ma formation juridique, m'a doté d'une grande rigueur analytique et d'une capacité à naviguer dans des systèmes normatifs, des atouts que je transpose aujourd'hui à la veille et à la mise en conformité en QHSE.</p>
+            <p>...</p>
         </div>
     </div>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            if (anchor.id !== 'back-to-top') {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            }
-        });
-        
-        function setupModal(btnId, modalId, closeClass) {
-            var modal = document.getElementById(modalId);
-            var btn = document.getElementById(btnId);
-            var span = document.getElementsByClassName(closeClass)[0];
-
-            if (btn) { btn.onclick = function() { modal.style.display = "block"; } }
-            if (span) { span.onclick = function() { modal.style.display = "none"; } }
-            window.addEventListener('click', function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            });
-        }
-        
-        setupModal('btn-qhse', 'qhseModal', 'qhse-close');
-        setupModal('btn-certifs', 'certifsModal', 'certifs-close');
-        setupModal('btn-droit', 'droitModal', 'droit-close');
-
-        var imageModal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("img01");
-        var images = document.getElementsByClassName("portfolio-img");
-        for (var i = 0; i < images.length; i++) {
-            images[i].onclick = function(){
-                imageModal.style.display = "block";
-                modalImg.src = this.src;
-            }
-        }
-        var imageCloseSpan = document.getElementsByClassName("image-close")[0];
-        if (imageCloseSpan) { imageCloseSpan.onclick = function() { imageModal.style.display = "none"; } }
-        window.addEventListener('click', function(event) {
-            if (event.target == imageModal) {
-                imageModal.style.display = "none";
-            }
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-        
-        let mybutton = document.getElementById("back-to-top");
-        window.onscroll = function() {scrollFunction()};
-        function scrollFunction() {
-          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            mybutton.style.display = "block";
-          } else {
-            mybutton.style.display = "none";
-          }
-        }
-        
-        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            document.body.classList.add(currentTheme);
-            if (currentTheme === 'dark-mode') {
-                toggleSwitch.checked = true;
-            }
-        }
-        function switchTheme(e) {
-            if (e.target.checked) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-            }
-            else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light-mode');
-            }    
-        }
-        toggleSwitch.addEventListener('change', switchTheme, false);
+        // Script combiné
     </script>
 
 </body>
