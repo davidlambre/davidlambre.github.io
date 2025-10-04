@@ -67,7 +67,7 @@
             font-size: 1.2em;
             color: var(--secondary-color);
             line-height: 1.4;
-            height: 3.2em; /* Hauteur pour 2 lignes */
+            height: 3.2em;
         }
         
         header .summary {
@@ -304,37 +304,31 @@
             background-color: #2980b9;
         }
 
-        /* MODIFICATION : Animation machine à écrire corrigée */
+        /* MODIFICATION : CSS de l'animation "machine à écrire" corrigé */
         .typewriter-line {
-            display: inline-block;
+            display: block; /* Force chaque span sur sa propre ligne */
             overflow: hidden;
             white-space: nowrap;
-            margin: 0;
+            width: 0; /* Commence avec une largeur de 0 */
+            margin: 0 auto; /* Centre le bloc */
         }
         .line1 {
-            width: 0;
+            /* Anime la largeur de 0 à 35ch (35 caractères) en 2.5s */
             animation: typing 2.5s steps(35, end) forwards;
         }
         .line2 {
-            width: 0;
-            border-right: .15em solid var(--secondary-color);
+            /* Même animation, mais avec un délai pour commencer après la première */
+            border-right: .15em solid var(--secondary-color); /* Le curseur */
             animation: typing 2.5s steps(35, end) 2.6s forwards,
                        blink-caret .75s step-end infinite 2.6s;
         }
-        
         @keyframes typing {
             from { width: 0 }
-            to { width: 100% }
+            to { width: 35ch; } /* 'ch' est une unité basée sur la largeur d'un caractère */
         }
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: var(--secondary-color); }
-        }
-        /* Media query pour les petits écrans */
-        @media screen and (max-width: 768px) {
-            header h2 {
-                display: block;
-            }
         }
 
         
@@ -480,7 +474,7 @@
         <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambre" class="profile-pic">
         <h1>David Lambre</h1>
         <h2>
-            <span class="typewriter-line line1">Manager de la Qualité et des Risques</span><br>
+            <span class="typewriter-line line1">Manager de la Qualité et des Risques</span>
             <span class="typewriter-line line2">Auditeur de systèmes de management</span>
         </h2>
         <p class="summary">
