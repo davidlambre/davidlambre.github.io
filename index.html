@@ -64,9 +64,10 @@
         header h2 {
             margin: 10px 0;
             font-weight: 300;
-            font-size: 1.2em; /* Taille légèrement réduite pour mobile */
+            font-size: 1.2em; /* Taille ajustée pour 2 lignes */
             color: var(--secondary-color);
             line-height: 1.4;
+            height: 3.2em; /* Hauteur pour 2 lignes */
         }
         
         header .summary {
@@ -261,7 +262,7 @@
              color: var(--primary-color);
              margin-top: 0;
         }
-        .modal-text-content p {
+        .modal-text-content p, .modal-text-content li {
             margin-bottom: 15px;
         }
 
@@ -323,7 +324,7 @@
             overflow: hidden;
             white-space: nowrap;
             margin: 0 auto;
-            display: block; /* Chaque ligne est un bloc */
+            display: block;
         }
         .line1 {
             width: 0;
@@ -332,8 +333,8 @@
         .line2 {
             width: 0;
             border-right: .15em solid var(--secondary-color);
-            animation: typing2 2s steps(35, end) 2s forwards,
-                       blink-caret .75s step-end infinite 2s;
+            animation: typing2 2s steps(35, end) 2.1s forwards, /* Délai pour commencer après la ligne 1 */
+                       blink-caret .75s step-end infinite 2.1s;
         }
         
         @keyframes typing1 {
@@ -511,27 +512,282 @@
     <div class="container">
 
         <section id="competences">
-            </section>
+            <h2 class="section-title">Compétences</h2>
+            <div class="skills-grid">
+                <div class="card hidden">
+                    <h3 class="card-title">Pilotage Opérationnel & Amélioration Continue</h3>
+                    <ul>
+                        <li><strong>Audit de Systèmes de Management (ISO 19011)</strong><p>Planification, réalisation et suivi d'audits internes et externes.</p></li>
+                        <li><strong>Analyse des Risques</strong><p>Capacité à identifier, évaluer et hiérarchiser les risques (DUERP, AMDEC).</p></li>
+                        <li><strong>Sécurité Sanitaire des Aliments</strong><p>Maîtrise de la méthode HACCP et du Plan de Maîtrise Sanitaire (PMS).</p></li>
+                        <li><strong>Gestion des non-conformités & Résolution de problèmes</strong><p>Analyse des causes racines (5 Pourquoi, Ishikawa) et déploiement de plans d'actions.</p></li>
+                        <li><strong>Formation et Sensibilisation</strong><p>Création de supports et animation de formations sur les bonnes pratiques QHSE.</p></li>
+                        <li><strong>Veille réglementaire et normative</strong><p>Capacité à suivre les évolutions légales et normatives pour garantir la mise en conformité continue.</p></li>
+                    </ul>
+                </div>
+                <div class="card hidden">
+                    <h3 class="card-title">Normes et Référentiels</h3>
+                     <ul>
+                        <li><strong>FSQS</strong><p>Garant du respect du cahier des charges de la grande distribution.</p></li>
+                        <li><strong>Agriculture Biologique</strong><p>Responsable de la conformité de la filière Bio et garantie de la traçabilité.</p></li>
+                        <li><strong>Certification de services</strong><p>Pilotage de la démarche d'amélioration de la qualité de service.</p></li>
+                        <li><strong>Certification phytosanitaire</strong><p>Gestion de la conformité réglementaire pour la vente de produits.</p></li>
+                        <li>
+                            <strong>Connaissance des Normes ISO (9001, 14001, 45001, 22000, 26000) et MASE.</strong>
+                            <br><em>Maîtrise des exigences et des principes de ces référentiels clés acquise lors de ma certification RNCP Niveau 6.</em>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card hidden">
+                    <h3 class="card-title">Compétences Transverses & Managériales</h3>
+                    <ul>
+                        <li><strong>Gestion de Projet</strong><p>Pilotage de projets transverses de la conception au déploiement.</p></li>
+                        <li><strong>Management d'Équipe & Leadership</strong><p>Encadrement, formation et coordination d'équipes.</p></li>
+                        <li><strong>Conduite du Changement</strong><p>Accompagnement des équipes dans l'adoption de nouvelles procédures.</p></li>
+                        <li><strong>Analyse de Données & Reporting</strong><p>Analyse des KPIs pour préparer les revues de direction.</p></li>
+                         <li><strong>Outils Numériques</strong><p>Maîtrise du Pack Office (Excel, PowerPoint) et formation sur Power BI.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section id="formations">
-            </section>
+            <h2 class="section-title">Formations et Certifications</h2>
+            <div class="skills-grid">
+                <div class="card hidden">
+                    <h3>Responsable Système QHSE (2024)</h3>
+                    <p>Certification RNCP Niveau 6. Formation intensive apportant la méthodologie pour piloter un système de management QHSE.</p>
+                    <button class="info-button" id="btn-qhse">Plus d'infos</button>
+                </div>
+                <div class="card hidden">
+                    <h3>Certifications Clés</h3>
+                    <p><strong>Auditeur (ISO 19011) & WSET niveau 1</strong> : Double certification validant mes compétences en audit et ma compréhension de la qualité produit.</p>
+                    <button class="info-button" id="btn-certifs">Plus d'infos</button>
+                </div>
+                 <div class="card hidden">
+                    <h3>Maîtrise en Droit et Sciences Politiques (2011)</h3>
+                    <p>Parcours m'ayant doté d'une grande rigueur analytique et d'une capacité à naviguer dans des systèmes normatifs complexes.</p>
+                    <button class="info-button" id="btn-droit">Plus d'infos</button>
+                </div>
+            </div>
+        </section>
         
         <section id="experiences">
-            </section>
+            <h2 class="section-title">Expériences Professionnelles</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable Qualité <span style="float:right; font-style:italic; color:#777;">2024 – 2025</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">E.LECLERC WATTRELOS</p>
+                        <ul>
+                            <li><strong>Pilotage de la Conformité et des Audits :</strong> Coordination des 5 audits de renouvellement (FSQS, Bio...), gestion des audits internes et interlocuteur privilégié des organismes de contrôle externes (DDPP, certificateurs).</li>
+                            <li><strong>Maîtrise de la Sécurité Sanitaire et Gestion de Crise :</strong> Garant de l'application des procédures d'hygiène (HACCP, PMS) et pilotage des situations de crise (alertes sanitaires, retraits/rappels).</li>
+                            <li><strong>Amélioration Continue et Performance :</strong> Transformation de l'analyse des KPIs et des non-conformités en plans d'actions concrets, et présentation des bilans en revue de direction.</li>
+                            <li><strong>Conduite de Projets QHSE & RSE :</strong> Pilotage de projets transverses comme le renouvellement des EPI et la certification "anti-gaspi".</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable Magasin <span style="float:right; font-style:italic; color:#777;">2019 – 2023</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">LABEL VIE LESQUIN</p>
+                        <ul>
+                            <li><strong>Pilotage de la Performance et Management :</strong> Pilotage du centre de profit et management d'une équipe de 5 personnes pour garantir l'atteinte des objectifs commerciaux.</li>
+                            <li><strong>Garantie de l'Excellence Opérationnelle :</strong> Conduite de projets d'amélioration continue, dont une optimisation de gamme ayant augmenté le CA de 5% sur les catégories ciblées.</li>
+                            <li><strong>Développement des Filières Locales et Conseil Client :</strong> Création de partenariats avec des producteurs biologiques pour garantir une offre de produits frais et de haute qualité.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="timeline-item">
+                    <article class="card experience-item hidden">
+                        <h3>Responsable de Rayon <span style="float:right; font-style:italic; color:#777;">2013 – 2019</span></h3>
+                        <p style="margin-top:0; font-weight:bold;">LABEL VIE HEM</p>
+                        <ul>
+                            <li><strong>Gestion Commerciale et Performance :</strong> Pilotage complet du rayon, avec une optimisation des commandes et de la rotation des produits permettant de maintenir le taux de démarque sous l'objectif.</li>
+                            <li><strong>Garantie de la Qualité et de la Traçabilité :</strong> Mise en place de contrôles qualité systématiques à la réception et supervision de la traçabilité complète des lots.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
 
         <section id="portfolio">
-            </section>
+            <h2 class="section-title">Portfolios</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item hidden">
+                    <img src="https://i.imgur.com/G9VkYQC.png" alt="Plan de communication" class="portfolio-img">
+                    <p>Plan de communication sur un enjeu de sécurité sanitaire</p>
+                </div>
+                <div class="portfolio-item hidden">
+                    <img src="https://i.imgur.com/kXbitaG.png" alt="Analyse des risques AMDEC" class="portfolio-img">
+                    <p>Analyse des risques d'une mauvaise gestion documentaire via l'outil AMDEC</p>
+                </div>
+            </div>
+        </section>
 
         <section id="langues">
-            </section>
+            <h2 class="section-title">Langues</h2>
+            <div class="langues-grid">
+                <div class="langue-item">
+                    <h4>Français</h4>
+                    <p>Langue maternelle</p>
+                </div>
+                <div class="langue-item">
+                    <h4>Anglais</h4>
+                    <p>Niveau B1 (Professionnel)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="interets">
+            <h2 class="section-title">Centres d'Intérêt</h2>
+            <div class="card hidden">
+                <h3>Aviation, Histoire & Mécanique</h3>
+                <p>Passionné par l'histoire, la mécanique et surtout l'aviation, je trouve dans ces domaines des échos constants avec les principes du QHSE.</p>
+                <p>Le secteur aéronautique, en particulier, est une source d'inspiration. La sécurité aérienne, qui atteint aujourd'hui un niveau d'excellence quasi absolu, est le fruit d'une culture d'<strong>amélioration continue</strong> rigoureuse. Chaque incident est analysé en profondeur non pas pour trouver un coupable, mais pour comprendre une défaillance et renforcer le système. C'est la démonstration que chaque événement indésirable est une opportunité de progresser et de <strong>réduire les risques futurs</strong>.</p>
+                <p>Cette culture de la sécurité repose aussi sur des <strong>procédures</strong> d'une précision absolue, comme les check-lists. Ces documents sont conçus pour être universels : ils doivent être suffisamment clairs pour être appliqués par n'importe quel membre d'équipage, quelles que soient son origine, sa compagnie ou sa formation. C'est une leçon magistrale sur l'importance d'un <strong>système documentaire robuste et accessible</strong>.</p>
+            </div>
+        </section>
 
     </div>
 
     <footer>
-        </footer>
+        <div class="container">
+            <p><strong>David Lambre</strong></p>
+            <p><a href="https://www.linkedin.com/in/davidlambre" target="_blank">Profil LinkedIn</a></p>
+            <p>&copy; 2025 - Site réalisé avec l'aide de l'IA Gemini</p>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close image-close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+    
+    <div id="qhseModal" class="modal">
+        <div class="modal-text-content">
+            <span class="close qhse-close">&times;</span>
+            <h3>Détails : Responsable Système QHSE</h3>
+            <p>Cette formation intensive et certifiante m'a apporté la méthodologie et les outils pour piloter un système de management QHSE de manière stratégique et opérationnelle. Au-delà des aspects théoriques, elle a été axée sur la mise en pratique des compétences suivantes :</p>
+            <ul>
+                <li><strong>Élaboration de la politique QHSE :</strong> Réalisation de diagnostics, analyse des risques professionnels (DUERP), maîtrise des normes (ISO 9001, 14001, 45001) et intégration des enjeux RSE (ISO 26000).</li>
+                <li><strong>Déploiement et animation du système :</strong> Construction de la structure documentaire, gestion de projet, mise en place d'une veille réglementaire efficace.</li>
+                <li><strong>Contrôle et amélioration continue :</strong> Pilotage d'audits, élaboration de plans d'action, suivi d'indicateurs de performance (KPIs) et analyse des causes racines.</li>
+            </ul>
+            <p>J'ai validé ma formation en menant un projet d'audit et d'optimisation du système documentaire QHSE chez E.Leclerc. À partir d'un état des lieux, j'ai mené une analyse approfondie des causes (Ishikawa) et des risques (AMDEC) pour ensuite proposer et initier des solutions concrètes (mise à jour, codification, numérisation, accès centralisé).</p>
+        </div>
+    </div>
+
+    <div id="certifsModal" class="modal">
+        <div class="modal-text-content">
+            <span class="close certifs-close">&times;</span>
+            <h3>Détails : Certifications Clés</h3>
+            <h4>AUDITEUR de SYSTEMES DE MANAGEMENT (référentiel ISO 19011) 2024</h4>
+            <p>Certification validant ma compétence à planifier, réaliser et suivre des audits de systèmes de management (Qualité, Sécurité, Environnement). Maîtrise des techniques d'audit, de la collecte de preuves tangibles à la communication des conclusions et à la vérification de l'efficacité des actions correctives.</p>
+            <h4>WSET niveau 1 2023</h4>
+            <p>Valide ma capacité à suivre une méthode d'évaluation sensorielle rigoureuse et ma compréhension de l'impact des matières premières (terroirs, cépages) et des processus de fabrication sur la qualité du produit fini.</p>
+        </div>
+    </div>
+    
+    <div id="droitModal" class="modal">
+        <div class="modal-text-content">
+            <span class="close droit-close">&times;</span>
+            <h3>Détails : Maîtrise en Droit et Sciences Politiques</h3>
+            <p>Mon parcours a débuté par une formation en Droit, que j'ai complétée par une spécialisation en Relations Internationales. Cette double compétence m'a permis d'effectuer un stage formateur en tant que lobbyiste pour une entreprise russe du secteur minier (nickel) auprès du Parlement européen.</p>
+            <p>En charge d'organiser les rendez-vous avec les parties prenantes et de mettre à jour les supports de communication, j'ai développé une solide compréhension des cadres réglementaires complexes et des stratégies de communication dans un environnement international exigeant. Cette expérience, combinée à ma formation juridique, m'a doté d'une grande rigueur analytique et d'une capacité à naviguer dans des systèmes normatifs, des atouts que je transpose aujourd'hui à la veille et à la mise en conformité en QHSE.</p>
+        </div>
+    </div>
+
 
     <script>
-        // Scripts combinés
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            if (anchor.id !== 'back-to-top') {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+        
+        function setupModal(btnId, modalId, closeClass) {
+            var modal = document.getElementById(modalId);
+            var btn = document.getElementById(btnId);
+            var span = document.getElementsByClassName(closeClass)[0];
+
+            if (btn) { btn.onclick = function() { modal.style.display = "block"; } }
+            if (span) { span.onclick = function() { modal.style.display = "none"; } }
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+        
+        setupModal('btn-qhse', 'qhseModal', 'qhse-close');
+        setupModal('btn-certifs', 'certifsModal', 'certifs-close');
+        setupModal('btn-droit', 'droitModal', 'droit-close');
+
+        var imageModal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("img01");
+        var images = document.getElementsByClassName("portfolio-img");
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function(){
+                imageModal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        }
+        var imageCloseSpan = document.getElementsByClassName("image-close")[0];
+        if (imageCloseSpan) { imageCloseSpan.onclick = function() { imageModal.style.display = "none"; } }
+        window.addEventListener('click', function(event) {
+            if (event.target == imageModal) {
+                imageModal.style.display = "none";
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+        
+        let mybutton = document.getElementById("back-to-top");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            }
+            else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }    
+        }
+        toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
 
 </body>
