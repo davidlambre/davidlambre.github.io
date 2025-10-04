@@ -67,6 +67,11 @@
             font-size: 1.2em;
             color: var(--secondary-color);
             line-height: 1.4;
+            height: 3.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         header .summary {
@@ -303,6 +308,45 @@
             background-color: #2980b9;
         }
 
+        .typewriter-line {
+            display: block;
+        }
+
+        /* Animation uniquement sur les écrans larges */
+        @media screen and (min-width: 768px) {
+            .typewriter-container {
+                display: inline-block;
+            }
+            .typewriter-line {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 0;
+                text-align: left;
+            }
+            .line1 {
+                animation: typing1 2.5s steps(35, end) forwards;
+            }
+            .line2 {
+                border-right: .15em solid var(--secondary-color);
+                animation: typing2 2.5s steps(35, end) 2.6s forwards,
+                           blink-caret .75s step-end infinite 2.6s;
+            }
+            
+            @keyframes typing1 {
+                from { width: 0 }
+                to { width: 100% }
+            }
+            @keyframes typing2 {
+                from { width: 0 }
+                to { width: 100% }
+            }
+            @keyframes blink-caret {
+                from, to { border-color: transparent }
+                50% { border-color: var(--secondary-color); }
+            }
+        }
+        
         .timeline {
             position: relative;
             max-width: 900px;
@@ -442,12 +486,13 @@
     </div>
 
     <header>
-        <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambre" class="profile-pic">
-        <h1>David Lambre</h1>
+        <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambré" class="profile-pic">
+        <h1>David Lambré</h1>
         <h2>
-            Manager de la Qualité et des Risques
-            <br>
-            <span style="font-size: 0.8em;">Auditeur de systèmes de management</span>
+            <div class="typewriter-container">
+                <span class="typewriter-line line1">Manager de la Qualité et des Risques</span>
+                <span class="typewriter-line line2">Auditeur de systèmes de management</span>
+            </div>
         </h2>
         <p class="summary">
             Fort de 11 ans d'expérience en management opérationnel, je me suis spécialisé dans le pilotage de la qualité, la maîtrise des risques et l'audit de systèmes de management, notamment dans le secteur exigeant de la grande distribution. Mon parcours diversifié allie cette expertise de terrain à une maîtrise de la conformité réglementaire.
@@ -596,7 +641,7 @@
 
     <footer>
         <div class="container">
-            <p><strong>David Lambre</strong></p>
+            <p><strong>David Lambré</strong></p>
             <p><a href="https://www.linkedin.com/in/davidlambre" target="_blank">Profil LinkedIn</a></p>
             <p>&copy; 2025 - Site réalisé avec l'aide de l'IA Gemini</p>
         </div>
