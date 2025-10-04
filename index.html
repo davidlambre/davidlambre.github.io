@@ -64,7 +64,7 @@
         header h2 {
             margin: 10px 0;
             font-weight: 300;
-            font-size: 1.2em; /* Taille ajustée pour 2 lignes */
+            font-size: 1.2em;
             color: var(--secondary-color);
             line-height: 1.4;
             height: 3.2em; /* Hauteur pour 2 lignes */
@@ -140,7 +140,7 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             text-align: center;
         }
@@ -197,21 +197,6 @@
             font-size: 0.9em;
             color: var(--text-color);
             font-style: normal;
-        }
-
-        .langues-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            text-align: center;
-        }
-        .langue-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        .langue-item p {
-            margin: 0;
-            color: #555;
         }
 
         footer {
@@ -319,29 +304,25 @@
             background-color: #2980b9;
         }
 
-        /* MODIFICATION : Animation machine à écrire sur 2 lignes */
+        /* MODIFICATION : Animation machine à écrire corrigée */
         .typewriter-line {
+            display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            margin: 0 auto;
-            display: block;
+            margin: 0;
         }
         .line1 {
             width: 0;
-            animation: typing1 2s steps(35, end) forwards;
+            animation: typing 2.5s steps(35, end) forwards;
         }
         .line2 {
             width: 0;
             border-right: .15em solid var(--secondary-color);
-            animation: typing2 2s steps(35, end) 2.1s forwards, /* Délai pour commencer après la ligne 1 */
-                       blink-caret .75s step-end infinite 2.1s;
+            animation: typing 2.5s steps(35, end) 2.6s forwards,
+                       blink-caret .75s step-end infinite 2.6s;
         }
         
-        @keyframes typing1 {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes typing2 {
+        @keyframes typing {
             from { width: 0 }
             to { width: 100% }
         }
@@ -349,6 +330,13 @@
             from, to { border-color: transparent }
             50% { border-color: var(--secondary-color); }
         }
+        /* Media query pour les petits écrans */
+        @media screen and (max-width: 768px) {
+            header h2 {
+                display: block;
+            }
+        }
+
         
         .timeline {
             position: relative;
@@ -492,7 +480,7 @@
         <img src="https://i.imgur.com/xtJ03C2.jpeg" alt="Photo de David Lambre" class="profile-pic">
         <h1>David Lambre</h1>
         <h2>
-            <span class="typewriter-line line1">Manager de la Qualité et des Risques</span>
+            <span class="typewriter-line line1">Manager de la Qualité et des Risques</span><br>
             <span class="typewriter-line line2">Auditeur de systèmes de management</span>
         </h2>
         <p class="summary">
@@ -627,20 +615,6 @@
                 </div>
             </div>
         </section>
-
-        <section id="langues">
-            <h2 class="section-title">Langues</h2>
-            <div class="langues-grid">
-                <div class="langue-item">
-                    <h4>Français</h4>
-                    <p>Langue maternelle</p>
-                </div>
-                <div class="langue-item">
-                    <h4>Anglais</h4>
-                    <p>Niveau B1 (Professionnel)</p>
-                </div>
-            </div>
-        </section>
         
         <section id="interets">
             <h2 class="section-title">Centres d'Intérêt</h2>
@@ -700,7 +674,6 @@
             <p>En charge d'organiser les rendez-vous avec les parties prenantes et de mettre à jour les supports de communication, j'ai développé une solide compréhension des cadres réglementaires complexes et des stratégies de communication dans un environnement international exigeant. Cette expérience, combinée à ma formation juridique, m'a doté d'une grande rigueur analytique et d'une capacité à naviguer dans des systèmes normatifs, des atouts que je transpose aujourd'hui à la veille et à la mise en conformité en QHSE.</p>
         </div>
     </div>
-
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
